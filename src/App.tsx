@@ -1,25 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { useContext } from 'react';
 import './App.css';
+import FormPersonal from './components/FormPersonal/FormPersonal';
+import FormEducation from './components/FormPersonal/FormEducation';
+import RootLayout from './components/RootLayout';
+import Home from './components/Home';
+import FormContext from './store/form-context';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <RootLayout />,
+    children: [
+      { path: '/', element: <Home /> },
+      {
+        path: '/FormPersonal',
+        element: <FormPersonal />,
+      },
+      {
+        path: '/FormEducation',
+        element: <FormEducation />, //po wpisanu popsu w FormEducation router wymusza podanie ich tutaj
+      },
+    ],
+  },
+]);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <RouterProvider router={router} />
+    </>
   );
 }
 
