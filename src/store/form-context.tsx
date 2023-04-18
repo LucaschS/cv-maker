@@ -1,4 +1,5 @@
 import { createContext } from 'react';
+
 interface personalData {
   name: string;
   surname: string;
@@ -12,21 +13,21 @@ interface educationData {
   endDate: string;
 }
 
-type formData = {
-  personalState: personalData;
-  educationState: educationData;
-}[];
+// interface formData {
+//   personalState?: personalData;
+//   educationState?: educationData;
+// };
 
-interface context {
-  formData: formData;
+type context = {
+  // formData: formData;
   onAddPersonalData: (personalData: personalData) => void;
   onAddEducationData: (educationData: educationData) => void;
-}
+};
 
 const FormContext = createContext<context>({
-  formData: [],
-  onAddPersonalData: (personalData: personalData) => {},
-  onAddEducationData: (educationData: educationData) => {},
+  // formData: [],
+  onAddPersonalData: () => {},
+  onAddEducationData: () => {},
 });
 
 export default FormContext;

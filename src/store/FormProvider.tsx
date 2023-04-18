@@ -5,41 +5,39 @@ type FormContextProviderProps = {
   children: React.ReactNode;
 };
 
-interface educationState {
+interface personalState extends formData {
+  name: string;
+  surname: string;
+  age: number;
+}
+
+interface educationState extends formData {
   school: string;
   description: string;
   startDate: string;
   endDate: string;
 }
 
-interface personalState {
-  name: string;
-  surname: string;
-  age: number;
-}
-
 type formData = {
-  personalData: personalState;
-  educationData: educationState;
-}[];
+  personalData?: personalState;
+  educationData?: educationState;
+};
 
 export const FormContextProvider = ({ children }: FormContextProviderProps) => {
   const [formData, setFormData] = useState<formData[]>([]);
   console.log(formData, 'formdata');
 
   const onAddEducationData = (educationData: educationState) => {
-    setFormData((prevState: any) => [...prevState, educationData]); //to dziala tylko z any, jak zrobić, żeby np wpisywał do stanu formData jako obiekt w tablicy
+
+    setFormData((prevState) => ({ ...prevState,educationData:educationData }));
   };
 
   const onAddPersonalData = (personalData: personalState) => {
-    setFormData((prevState) => ({
-      ...prevState,
-      personalData,
-    }));
+    setFormData((prevState) => ({ ...prevState, personalData:personalData }));
   };
 
   const formContext = {
-    formData: [],
+    // formData,
     onAddEducationData,
     onAddPersonalData,
   };

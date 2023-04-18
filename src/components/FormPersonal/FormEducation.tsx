@@ -9,12 +9,13 @@ const education = {
   endDate: '',
 };
 
-interface educationProps {
-  onAddEducationData: (educationState: typeof education) => void;
-}
+// interface educationProps {
+//   onAddEducationData: (educationState: typeof education) => void;
+// }
 
-const FormEducation = (props: educationProps) => {
+const FormEducation = (props: any) => {
   const ctx = useContext(FormContext);
+  console.log('edu');
 
   const [educationState, setEducationState] = useState<typeof education>(
     education
