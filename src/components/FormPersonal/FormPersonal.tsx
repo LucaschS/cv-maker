@@ -9,9 +9,17 @@ interface Props {
     property: 'personal' | 'experience' | 'education',
     index: number
   ) => (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onItemAdd: () => void;
+  onItemRemove: () => void;
 }
 
-const FormPersonal = ({ item, index, onInputArrayChange }: Props) => {
+const FormPersonal = ({
+  item,
+  index,
+  onInputArrayChange,
+  onItemAdd,
+  onItemRemove,
+}: Props) => {
   const {
     name,
     surname,
@@ -30,8 +38,9 @@ const FormPersonal = ({ item, index, onInputArrayChange }: Props) => {
           <label htmlFor='name'>Your Name</label>
           <input
             type='text'
-            id='name'
+            placeholder='name'
             value={name}
+            name='name'
             onChange={onInputArrayChange('personal', index)}
           />
         </div>
@@ -39,8 +48,9 @@ const FormPersonal = ({ item, index, onInputArrayChange }: Props) => {
           <label htmlFor='surname'>Your Surname</label>
           <input
             type='text'
-            id='surname'
+            placeholder='surname'
             value={surname}
+            name='surname'
             onChange={onInputArrayChange('personal', index)}
           />
         </div>
@@ -48,8 +58,9 @@ const FormPersonal = ({ item, index, onInputArrayChange }: Props) => {
           <label htmlFor='profession'>Your Profession</label>
           <input
             type='text'
-            id='profession'
+            placeholder='profession'
             value={profession}
+            name='profession'
             onChange={onInputArrayChange('personal', index)}
           />
         </div>
@@ -57,8 +68,9 @@ const FormPersonal = ({ item, index, onInputArrayChange }: Props) => {
           <label htmlFor='title'>Title</label>
           <input
             type='text'
-            id='title'
+            placeholder='title'
             value={title}
+            name={name}
             onChange={onInputArrayChange('personal', index)}
           />
         </div>
@@ -66,8 +78,9 @@ const FormPersonal = ({ item, index, onInputArrayChange }: Props) => {
           <label htmlFor='phone'>Your Phone Number</label>
           <input
             type='text'
-            id='phone'
+            placeholder='phone'
             value={phone}
+            name={name}
             onChange={onInputArrayChange('personal', index)}
           />
         </div>
@@ -75,8 +88,9 @@ const FormPersonal = ({ item, index, onInputArrayChange }: Props) => {
           <label htmlFor='email'>Your Email</label>
           <input
             type='text'
-            id='email'
+            placeholder='email'
             value={email}
+            name={name}
             onChange={onInputArrayChange('personal', index)}
           />
         </div>
@@ -84,8 +98,9 @@ const FormPersonal = ({ item, index, onInputArrayChange }: Props) => {
           <label htmlFor='location'>Location</label>
           <input
             type='text'
-            id='location'
+            placeholder='location'
             value={location}
+            name={name}
             onChange={onInputArrayChange('personal', index)}
           />
         </div>
@@ -93,10 +108,19 @@ const FormPersonal = ({ item, index, onInputArrayChange }: Props) => {
           <label htmlFor='birth_date'>Birth Date</label>
           <input
             type='text'
-            id='birth_date'
+            placeholder='birth_date'
             value={birth_date}
+            name={name}
             onChange={onInputArrayChange('personal', index)}
           />
+        </div>
+        <div>
+          <button type='button' onClick={onItemAdd}>
+            Add
+          </button>
+          <button type='button' onClick={onItemRemove}>
+            Remove
+          </button>
         </div>
       </div>
     </>

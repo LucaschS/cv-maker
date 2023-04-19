@@ -20,8 +20,7 @@ const data = {
     email: 'clay.hart@uqconnect.edu.au',
     location: 'Brisbane, Australia',
     birth_date: '26.04.1983',
-  }
-  ],
+  }],
   description:
     'I am a second year computer science student whose loves the challenge of building and deploying new web apps using a variety of different technologies. This app is a basic CV template builder created using React and Typescript. Please see my github for more examples of my work.',
   experience: [

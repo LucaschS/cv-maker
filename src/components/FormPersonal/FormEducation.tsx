@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react';
 import styles from './FormPersonal.module.css';
-import FormContext from '../../store/form-context';
 
 const education = {
   school: '',
@@ -14,7 +13,6 @@ const education = {
 // }
 
 const FormEducation = (props: any) => {
-  const ctx = useContext(FormContext);
   console.log('edu');
 
   const [educationState, setEducationState] = useState<typeof education>(
@@ -50,7 +48,6 @@ const FormEducation = (props: any) => {
 
   const onSubmitHandler: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    ctx.onAddEducationData(educationState);
   };
 
   return (

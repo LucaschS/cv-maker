@@ -6,84 +6,95 @@ import FormPersonal from './components/FormPersonal/FormPersonal';
 import FormEducation from './components/FormPersonal/FormEducation';
 import RootLayout from './components/RootLayout';
 import Home from './components/Home';
+import { State } from './models/interface-models';
 
-type ReducerAction =
-  | {
-      type: 'INPUT_NAME';
-      name: string;
-    }
-  | { type: 'INPUT_SURNAME'; surname: string }
-  | { type: 'INPUT_AGE'; age: number };
+type ReducerAction = {
+  type: 'INPUT_ARRAY_NAME';
+  name: string;
+  value: string;
+  property: 'personal' | 'experience' | 'education';
+  index: number;
+};
 
-const initialState = {
+// interface InitialState {
+//   personal: string[];
+//   description: string,
+//   experience: string[],
+//   education: string[],
+// };
+
+const initialState: State = {
   personal: [],
-  description: 'Nazwyam się Łukasz Smagóra',
+  description: '',
   experience: [],
   education: [],
 };
 
-const reducer = (prevState: typeof initialState, action: ReducerAction) => {
-  const { type } = action;
+const reducer = (prevState: State, action: ReducerAction) => {
+  const { type, name, value, property, index } = action;
   switch (type) {
-    case 'INPUT_NAME':
+    case 'INPUT_ARRAY_NAME':
       return {
         ...prevState,
-        name: action.name,
+        [property]: [
+          ...prevState[property].slice(0, index),
+          {
+            ...prevState[property][index],
+            [name]: value,
+          },
+          ...prevState[property].slice(index + 1),
+        ],
+        // c: console.log(
+        //   'type',
+        //   type,
+        //   'name',
+        //   name,
+        //   'value',
+        //   value,
+        //   'property',
+        //   property,
+        //   'index',
+        //   index
+        // ),
       };
-    case 'INPUT_SURNAME':
-      return {
-        ...prevState,
-        surname: action.surname,
-      };
-    case 'INPUT_AGE':
-      return {
-        ...prevState,
-        age: action.age,
-      };
+
     default:
       return initialState;
   }
 };
 
 const App = () => {
-  const [state, setState] = useReducer(reducer, initialState);
-
+  const [state, dispatch] = useReducer(reducer, initialState);
   const { personal, description, experience, education } = data;
 
-  console.log(state, 'state');
+  // console.log(state, 'state');
   const handleInputArrayChange = (
     property: 'personal' | 'experience' | 'education',
     index: number
   ) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    // setState((prevState) => ({
-    //   ...prevState,
-    //   education: [
-    //     ...prevState.education,
-    //     {
-    //       id: '',
-    //       course: '',
-    //       university: '',
-    //       startDate: '',
-    //       endDate: '',
-    //       desc: '',
-    //     },
-    //   ],
-    // }));
+    const { name, value } = e.target;
+    // console.log(e.target, 'target');
+    dispatch({
+      type: 'INPUT_ARRAY_NAME',
+      name: name,
+      value: value,
+      property: property,
+      index: index,
+    });
   };
 
-  // const nameInputChangeHandler: React.ChangeEventHandler<HTMLInputElement> = (
-  //   e
-  // ) => {
-  //   dispatchPersonalAction({
-  //     type: 'INPUT_NAME',
-  //     name: e.target.value,
-  //   });
-  // };
+  const handlePersonalAdd = () => {
+    // dispatch({ type: 'INPUT_NAME', name: 'asd' });
+  };
+
+  const handlePersonalRemove = () => {
+    console.log('remove');
+  };
 
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <RootLayout />,
+      element: <RootLayout {...state} />,
       children: [
         { path: '/', element: <Home /> },
         {
@@ -96,6 +107,8 @@ const App = () => {
                 item={item}
                 index={index}
                 onInputArrayChange={handleInputArrayChange}
+                onItemAdd={handlePersonalAdd}
+                onItemRemove={handlePersonalRemove}
               />
             );
           }),

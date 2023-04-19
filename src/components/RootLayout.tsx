@@ -1,13 +1,31 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
-import Template from './Templates/Template';
+import PersonalDetails from './Templates/PersonalDetails';
+import { State } from '../models/interface-models';
 
-const RootLayout = () => {
+interface Props {
+  personal: {
+    name: string;
+    surname: string;
+    profession: string;
+    title: string;
+    phone: string;
+    email: string;
+    location: string;
+    birth_date: string;
+  }[];
+}
+
+const RootLayout = (props: Props) => {
   return (
     <>
       <Navbar />
-      <Outlet  />
-      <Template/>
+      <Outlet />
+      {props.personal.map((item, index) => {
+        console.log(props, 'chuj');
+        console.log(item, 'item');
+        return <PersonalDetails key={index} item={item} />;
+      })}
     </>
   );
 };
