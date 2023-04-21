@@ -13,6 +13,9 @@ const Navbar = () => {
           <li>
             <Link to='/FormEducation'>Education</Link>
           </li>
+          <li>
+            <Link to='/FormExperience'>Experience</Link>
+          </li>
         </ul>
       </nav>
     </header>

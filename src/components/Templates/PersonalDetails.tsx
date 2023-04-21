@@ -1,5 +1,4 @@
 import React from 'react';
-import { personalDetails, State } from '../../models/interface-models';
 
 interface Props {
   item: {
@@ -25,13 +24,19 @@ const PersonalDetails = ({ item }: Props) => {
     location,
     birth_date,
   } = item;
-  console.log(item, 'consol');
+  console.log(item.name, 'item');
   return (
     <>
       <header>
         <div>
-          <h1>{name}</h1>
-          <h2>{surname}</h2>
+          <h1>Name: {name}</h1>
+          <h2>Surname: {surname}</h2>
+          <p>profession: {profession}</p>
+          <p>{title}</p>
+          <p>{phone}</p>
+          <p>{email}</p>
+          <p>{location}</p>
+          <p>{birth_date}</p>
         </div>
       </header>
     </>

@@ -1,28 +1,21 @@
 // import { v4 as uuidv4 } from 'uuid';
 
 const data = {
-  personal: [{
-    name: 'Clay',
-    surname: 'Hart',
-    profession: 'Programmer',
-    title: 'Computer Science Student',
-    phone: '0409852358',
-    email: 'clay.hart@uqconnect.edu.au',
-    location: 'Brisbane, Australia',
-    birth_date: '26.04.1983',
-  },
-  {
-    name: 'Clay',
-    surname: 'Hart',
-    profession: 'Programmer',
-    title: 'Computer Science Student',
-    phone: '0409852358',
-    email: 'clay.hart@uqconnect.edu.au',
-    location: 'Brisbane, Australia',
-    birth_date: '26.04.1983',
-  }],
   description:
     'I am a second year computer science student whose loves the challenge of building and deploying new web apps using a variety of different technologies. This app is a basic CV template builder created using React and Typescript. Please see my github for more examples of my work.',
+  personal: [
+    {
+      id: '',
+      name: 'Clay',
+      surname: 'Hart',
+      profession: 'Programmer',
+      title: 'Computer Science Student',
+      phone: '0409852358',
+      email: 'clay.hart@uqconnect.edu.au',
+      location: 'Brisbane, Australia',
+      birth_date: '26.04.1983',
+    },
+  ],
   experience: [
     {
       id: '',
@@ -30,7 +23,7 @@ const data = {
       company: 'A Software Company',
       startDate: '2018',
       endDate: 'Present',
-      desc: 'Ut fugiat minim qui voluptate culpa. Elit nostrud ex ad incididunt incididunt eiusmod. Officia cupidatat culpa commodo nisi nostrud.'
+      description: 'Ut fugiat minim qui voluptate culpa. Elit nostrud ex ad incididunt incididunt eiusmod. Officia cupidatat culpa commodo nisi nostrud.'
     },
     {
       id: '',
@@ -38,7 +31,7 @@ const data = {
       company: 'My First Company',
       startDate: '2017',
       endDate: '2018',
-      desc: 'Irure dolor incididunt sint et ullamco. Commodo laboris amet aliquip incididunt do ut est exercitation reprehenderit magna sit laboris est mollit.'
+      description: 'Irure dolor incididunt sint et ullamco. Commodo laboris amet aliquip incididunt do ut est exercitation reprehenderit magna sit laboris est mollit.'
     },
     {
       id: '',
@@ -46,7 +39,7 @@ const data = {
       company: 'University',
       startDate: '2015',
       endDate: '2017',
-      desc: 'Enim elit aliquip fugiat anim proident.'
+      description: 'Enim elit aliquip fugiat anim proident.'
     }
   ],
   education: [
@@ -55,14 +48,17 @@ const data = {
       course: 'Bachelor of Science',
       university: 'QUT',
       startDate: '2017',
-      endDate: '2018'
+      endDate: '2018',
+      description: ''
     },
     {
       id: '',
       course: 'Bachelor of Computer Science',
       university: 'University of Queensland',
       startDate: '2021',
-      endDate: 'Present'
+      endDate: 'Present',
+      description: ''
+
     }
   ]
 };

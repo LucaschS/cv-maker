@@ -1,9 +1,9 @@
-import React, { useState, useContext } from 'react';
-import styles from './FormEducation.module.css';
-import { Education } from '../../models/interface-models';
+import React from 'react';
+import styles from './FormExperience.module.css';
+import { Experience } from '../../models/interface-models';
 
 interface Props {
-  item: Education;
+  item: Experience;
   index: number;
   onInputArrayChange: (
     property: 'personal' | 'experience' | 'education',
@@ -17,7 +17,7 @@ interface Props {
   ) => void;
 }
 
-const FormEducation = ({
+const FormExperience = ({
   item,
   index,
   onInputArrayChange,
@@ -25,30 +25,30 @@ const FormEducation = ({
   onItemAdd,
   onItemRemove,
 }: Props) => {
-  const { id, course, university, startDate, endDate, description } = item;
+  const { id, position, company, startDate, endDate, description } = item;
   return (
     <form>
-      <h4>Education</h4>
+      <h4>Experience</h4>
       <div className={styles['form-control']}>
-        <label htmlFor='course'>Course</label>
+        <label htmlFor='course'>Position</label>
         <input
-          id={course}
+          id={position}
           type='text'
-          placeholder='course'
-          defaultValue={course}
-          name='course'
-          onChange={onInputArrayChange('education', index)}
+          placeholder='position'
+          defaultValue={position}
+          name='position'
+          onChange={onInputArrayChange('experience', index)}
         />
       </div>
       <div className={styles['form-control']}>
-        <label htmlFor='university'>University</label>
+        <label htmlFor='university'>Company</label>
         <input
-          id={university}
+          id={company}
           type='text'
-          placeholder='university'
-          defaultValue={university}
-          name='university'
-          onChange={onInputArrayChange('education', index)}
+          placeholder='company'
+          defaultValue={company}
+          name='company'
+          onChange={onInputArrayChange('experience', index)}
         />
       </div>
       <div className={styles['form-control']}>
@@ -59,7 +59,7 @@ const FormEducation = ({
           placeholder='startDate'
           defaultValue={startDate}
           name='startDate'
-          onChange={onInputArrayChange('education', index)}
+          onChange={onInputArrayChange('experience', index)}
         />
       </div>
       <div className={styles['form-control']}>
@@ -70,7 +70,7 @@ const FormEducation = ({
           placeholder='endDate'
           defaultValue={endDate}
           name='endDate'
-          onChange={onInputArrayChange('education', index)}
+          onChange={onInputArrayChange('experience', index)}
         />
       </div>
       <div className={styles['form-control']}>
@@ -89,7 +89,7 @@ const FormEducation = ({
         <button type='button' onClick={onItemAdd}>
           Add
         </button>
-        <button type='button' onClick={() => onItemRemove('education', id)}>
+        <button type='button' onClick={() => onItemRemove('experience', id)}>
           Remove
         </button>
       </div>
@@ -97,4 +97,4 @@ const FormEducation = ({
   );
 };
 
-export default FormEducation;
+export default FormExperience;

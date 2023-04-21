@@ -1,7 +1,8 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
 import PersonalDetails from './Templates/PersonalDetails';
-import { State } from '../models/interface-models';
+import EducationDetails from './Templates/EducationDetails';
+import ExperienceDetails from './Templates/ExperienceDetails';
 
 interface Props {
   personal: {
@@ -14,17 +15,36 @@ interface Props {
     location: string;
     birth_date: string;
   }[];
+  education: {
+    course: string;
+    university: string;
+    startDate: string;
+    endDate: string;
+    description: string;
+  }[];
+  experience: {
+    position: string;
+    company: string;
+    startDate: string;
+    endDate: string;
+    description: string;
+  }[];
 }
 
 const RootLayout = (props: Props) => {
+  console.log(props, 'props');
   return (
     <>
       <Navbar />
       <Outlet />
       {props.personal.map((item, index) => {
-        console.log(props, 'chuj');
-        console.log(item, 'item');
         return <PersonalDetails key={index} item={item} />;
+      })}
+      {props.experience.map((item, index) => {
+        return <ExperienceDetails key={index} item={item} />;
+      })}
+      {props.education.map((item, index) => {
+        return <EducationDetails key={index} item={item} />;
       })}
     </>
   );

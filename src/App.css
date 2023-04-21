@@ -3,3 +3,105 @@
   margin: 0;
   padding: 0;
 }
+
+/* Reset */
+input,
+textarea,
+button {
+  font: inherit;
+  color: inherit;
+  border: none;
+  background: none;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Styling */
+form {
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+h2 {
+  margin-bottom: 5px;
+}
+
+label {
+  text-transform: capitalize;
+  display: flex;
+  flex-direction: column;
+}
+
+input::placeholder {
+  text-transform: capitalize;
+}
+
+input,
+textarea {
+  border: 1px solid var(--grey);
+  border-radius: 3px;
+  font-size: 1rem;
+  padding: 5px;
+}
+
+textarea {
+  width: 100%;
+  resize: none;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.group:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.btn-group {
+  display: flex;
+  gap: 8px;
+}
+
+button {
+  color: var(--black);
+  border: 1px solid var(--grey);
+  padding: 4px 12px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 150ms;
+}
+
+.btn--add {
+  color: var(--dark-green);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 3px 0 hsl(0 0% 0% / 0.1);
+}
+
+.group:not(:last-child) button.btn--add {
+  display: none;
+}

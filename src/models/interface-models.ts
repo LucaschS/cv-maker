@@ -1,4 +1,5 @@
-export interface personalDetails {
+export interface Personal {
+  id: string;
   name: string;
   surname: string;
   profession: string;
@@ -15,7 +16,7 @@ export interface Experience {
   company: string;
   startDate: string;
   endDate: string;
-  desc?: string;
+  description: string;
 }
 
 export interface Education {
@@ -24,12 +25,12 @@ export interface Education {
   university: string;
   startDate: string;
   endDate: string;
-  desc?: string;
+  description: string;
 }
 
 export interface State {
-  personal: personalDetails[];
   description: string;
+  personal: Personal[];
   experience: Experience[];
   education: Education[];
 }
